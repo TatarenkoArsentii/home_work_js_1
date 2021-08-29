@@ -27,9 +27,6 @@ createTable();
 //     num = prompt("second value"),
 //     result = Math.round(userVaslue / num) * num,
 //     p = document.createElement("p");
-//   if (userVaslue < num) {
-//     result = "первое число должно быть больше второго";
-//   }
 //   p.innerHTML = "Task 6";
 //   body.appendChild(p);
 //   return result;
@@ -93,5 +90,4 @@ let pizzaCost = () => {
   }
   return sum;
 };
-
 alert(pizzaCost());
