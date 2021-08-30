@@ -121,7 +121,7 @@ console.log(myArr1());
 console.log(myArr2());
 
 let myArr3 = () => {
-  let arr1 = [1, 2, 3, 4, 5, 6, 7],
+  let arr1 = [1, 2, 3, 4, 4, 4, 5, 6, 7],
     arr2 = [4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15];
 
   let arr3 = arr1.concat(arr2),
@@ -131,7 +131,7 @@ let myArr3 = () => {
       result.push(str);
     }
   }
-  console.log(arr3);
+  console.log(result);
 };
 myArr3();
 let myArr4 = () => {
