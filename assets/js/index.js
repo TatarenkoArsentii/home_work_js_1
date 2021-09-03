@@ -1,13 +1,23 @@
 let body = document.body;
 // task 7
-let createTable = () => {
+let createTableTr = () => {
+  let tr = document.createElement("tr");
+  return tr;
+};
+
+let createTableTd = () => {
+  let td = document.createElement("td");
+  return td;
+};
+
+let createTable = (arg1, arg2) => {
   let table = document.createElement("table"),
     p = document.createElement("p");
   for (let i = 1; i <= 9; i++) {
-    let tr = document.createElement("tr");
+    let tr = arg1();
     for (let j = 1; j <= 9; j++) {
-      let td = document.createElement("td"),
-        res = j * i;
+      let td = arg2();
+      let res = j * i;
       td.innerText = res;
       tr.appendChild(td);
       td.className = "td";
@@ -19,22 +29,25 @@ let createTable = () => {
   body.appendChild(table);
 };
 
-createTable();
+createTable(createTableTr, createTableTd);
 
 // task 6
+let createElem = () => {
+  let p = document.createElement("p");
+  p.innerHTML = "Task 6";
+  body.appendChild(p);
+};
+
 let multipleValue = () => {
   let userVaslue = prompt("first value - user value"),
     num = prompt("second value - num"),
-    result = Math.round(userVaslue / num) * num,
-    p = document.createElement("p");
-  p.innerHTML = "Task 6";
-  body.appendChild(p);
+    result = Math.round(userVaslue / num) * num;
   return result;
 };
 
 let p1 = document.createElement("p");
 
-let multipleResult = multipleValue();
+let multipleResult = multipleValue(createElem());
 body.appendChild(p1);
 p1.innerText = `Ближайшее число кратное num =  ${multipleResult}`;
 
@@ -67,31 +80,26 @@ limNumbers();
 
 // Task 3
 console.log("Task 3");
-let equation = () => {
-  let x = -2,
-    lim2 = 2,
-    y;
+let equation = (x, lim2) => {
+  let y;
   for (; x <= lim2; x += 0.5) {
     y = -2.4 * Math.pow(x, 2) + 5 * x - 3;
     console.log(y);
   }
 };
 
-equation();
+equation(-2, 2);
 
 // Task 2
 console.log("Task 2");
-let pizzaCost = () => {
-  let weight = 900,
-    price = 135,
-    discount = 0.03,
-    sum = (weight / 100) * price;
-  if (weight >= 1000 || sum >= 500) {
-    return sum * (1 - discount);
+let pizzaCost = function () {
+  let sum = (arguments[0] / 100) * arguments[1];
+  if (arguments[0] >= 1000 || sum >= 500) {
+    return sum * (1 - arguments[2]);
   }
   return sum;
 };
-console.log(pizzaCost());
+console.log(pizzaCost(/*Weight*/ 900, /* price */ 135, /* discount */ 0.03));
 // Task arrey
 console.log("Task arrey");
 let myArr1 = () => {
@@ -120,10 +128,7 @@ let myArr2 = () => {
 console.log(myArr1());
 console.log(myArr2());
 
-let myArr3 = () => {
-  let arr1 = [1, 2, 3, 4, 4, 4, 5, 6, 7],
-    arr2 = [4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15];
-
+let myArr3 = (arr1, arr2) => {
   let arr3 = arr1.concat(arr2),
     result = [];
   for (let str of arr3) {
@@ -133,10 +138,8 @@ let myArr3 = () => {
   }
   console.log(result);
 };
-myArr3();
-let myArr4 = () => {
-  let arr1 = [1, 2, 3, 4, 5, 6, 7],
-    arr2 = [4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15];
+myArr3([1, 2, 3, 4, 5, 6, 7], [4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15]);
+let myArr4 = (arr1, arr2) => {
   let arr11 = arr1.join();
   let arr12 = arr2.join();
   let arr13 = `${arr11},${arr12}`;
@@ -153,4 +156,4 @@ let myArr4 = () => {
 
   console.log(result1);
 };
-myArr4();
+myArr4([1, 2, 3, 4, 5, 6, 7], [4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15]);
